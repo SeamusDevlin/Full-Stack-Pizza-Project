@@ -1,0 +1,33 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center">Order History</h1>
+
+    {% if orders %}
+        <div class="list-group mt-4">
+            {% for order in orders %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">Order #{{ order.id }}</h5>
+                    <p class="mb-1"><strong>Size:</strong> {{ order.size }}</p>
+                    <p class="mb-1"><strong>Crust:</strong> {{ order.crust }}</p>
+                    <p class="mb-1"><strong>Sauce:</strong> {{ order.sauce }}</p>
+                    <p class="mb-1"><strong>Cheese:</strong> {{ order.cheese }}</p>
+                    <p class="mb-1"><strong>Toppings:</strong> {{ order.toppings.all|join:", " }}</p>
+                    <p><strong>Order Time:</strong> {{ order.created_at|date:"F j, Y, g:i A" }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info mt-4">You have no previous orders.</div>
+    {% endif %}
+
+    <!-- Add a button to return to the home page -->
+    <div class="text-center mt-4">
+        <a href="{% url 'create_pizza' %}" class="btn btn-primary">Order Another Pizza</a>
+    </div>
+</div>
+
+
+{% endblock %}

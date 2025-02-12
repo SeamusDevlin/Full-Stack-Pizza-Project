@@ -1,0 +1,52 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block content %}
+<br><br>
+<div class="container2 mt-5">
+    <h1 class="text-center">Create Your Pizza</h1>
+    <form method="post" class="mt-4">
+        {% csrf_token %} 
+        
+        <div class="row mb-3">
+            <label for="size" class="col-sm-3 col-form-label">Pizza Size</label>
+            <div class="col-sm-9">
+                {{ form.size }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="crust" class="col-sm-3 col-form-label">Crust Type</label>
+            <div class="col-sm-9">
+                {{ form.crust }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="sauce" class="col-sm-3 col-form-label">Sauce</label>
+            <div class="col-sm-9">
+                {{ form.sauce }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="cheese" class="col-sm-3 col-form-label">Cheese</label>
+            <div class="col-sm-9">
+                {{ form.cheese }}
+            </div>
+        </div>
+
+        <!-- Toppings (Checkboxes) -->
+        <div class="row mb-3">
+            <label for="toppings" class="col-sm-3 col-form-label">Toppings</label>
+            <div class="col-sm-9">
+                {{ form.toppings }}
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Order Pizza</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
